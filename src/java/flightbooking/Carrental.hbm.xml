@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-Nov-2013 10:44:06 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="flightbooking.Carrental" table="carrental" catalog="flightsystem">
+        <id name="licenceno" type="int">
+            <column name="licenceno" />
+            <generator class="assigned" />
+        </id>
+        <property name="drivername" type="string">
+            <column name="drivername" length="50" />
+        </property>
+        <property name="modelyear" type="java.lang.Integer">
+            <column name="modelyear" />
+        </property>
+        <property name="kilometers" type="java.lang.Integer">
+            <column name="kilometers" />
+        </property>
+        <property name="seatsno" type="java.lang.Integer">
+            <column name="seatsno" />
+        </property>
+        <property name="payment" type="java.lang.Integer">
+            <column name="payment" />
+        </property>
+    </class>
+</hibernate-mapping>

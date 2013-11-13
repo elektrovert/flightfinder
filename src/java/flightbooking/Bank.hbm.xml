@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-Nov-2013 10:44:06 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="flightbooking.Bank" table="bank" catalog="flightsystem">
+        <id name="idno" type="int">
+            <column name="IDno" />
+            <generator class="assigned" />
+        </id>
+        <property name="customername" type="string">
+            <column name="customername" length="50" />
+        </property>
+        <property name="balance" type="java.lang.Integer">
+            <column name="balance" />
+        </property>
+    </class>
+</hibernate-mapping>

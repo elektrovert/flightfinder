@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-Nov-2013 10:44:06 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="flightbooking.Route" table="route" catalog="flightsystem">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="airline" class="flightbooking.Airline" fetch="select">
+            <column name="airline_id_int" />
+        </many-to-one>
+        <property name="code" type="string">
+            <column name="code" length="5" />
+        </property>
+        <property name="airlineId" type="string">
+            <column name="airline_id" length="7" />
+        </property>
+        <property name="fromIata" type="string">
+            <column name="from_iata" length="3" not-null="true" />
+        </property>
+        <property name="fromId" type="string">
+            <column name="from_id" length="7" />
+        </property>
+        <property name="toIata" type="string">
+            <column name="to_iata" length="3" not-null="true" />
+        </property>
+        <property name="toId" type="string">
+            <column name="to_id" length="7" />
+        </property>
+        <property name="planeTypes" type="string">
+            <column name="plane_types" length="40" />
+        </property>
+        <property name="price" type="int">
+            <column name="price" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

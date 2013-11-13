@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-Nov-2013 10:44:06 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="flightbooking.Traveller" table="traveller" catalog="flightsystem">
+        <id name="idno" type="int">
+            <column name="IDno" />
+            <generator class="assigned" />
+        </id>
+        <property name="travellername" type="string">
+            <column name="travellername" length="50" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="50" />
+        </property>
+        <property name="traveldate" type="date">
+            <column name="traveldate" length="10" />
+        </property>
+        <property name="fromcode" type="string">
+            <column name="fromcode" length="3" />
+        </property>
+        <property name="tocode" type="string">
+            <column name="tocode" length="3" />
+        </property>
+        <property name="price" type="java.lang.Integer">
+            <column name="price" />
+        </property>
+    </class>
+</hibernate-mapping>
