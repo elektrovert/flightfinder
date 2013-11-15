@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"> 
+
+    <ui:composition template="./template.xhtml">
+        <ui:define name="body">
+                
+            <h:form>
+                <h:commandLink action="#{bookingController.previous}" value="Previous #{bookingController.pageSize}" rendered="#{bookingController.hasPreviousPage}"/> 
+                <h:commandLink action="#{bookingController.next}" value="Next #{bookingController.pageSize}" rendered="#{bookingController.hasNextPage}"/> 
+            </h:form>
+            <h:dataTable value="#{bookingController.routes}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="ID:"/>
+                    </f:facet>
+                    <h:outputText value="#{item.id}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Airline:"/>
+                    </f:facet>
+                    <h:outputText value="#{item.name}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Comments:"/>
+                    </f:facet>
+                    <h:outputText value="#{item.country}"/>
+                </h:column>
+                <h:column>  
+                    <h:commandLink action="#{bookingController.prepareView}" value="View"/>
+                </h:column>
+            </h:dataTable>
+            <br/>
+        </ui:define>
+          
+    </ui:composition>
+
+</html>
+

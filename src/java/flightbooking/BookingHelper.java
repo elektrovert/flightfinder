@@ -58,4 +58,17 @@ public class BookingHelper {
     }
     return routeList;
 }
+    public List getAirports() {
+    String queryString = "FROM  Airport A ORDER BY A.name ASC";
+    List<Airport> airportList = null;
+    try {
+        org.hibernate.Transaction tx = session.beginTransaction();
+        Query q = session.createQuery (queryString);
+        airportList = (List<Airport>) q.list();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return airportList;
+}
 }
