@@ -9,16 +9,16 @@
     <ui:composition template="./template.xhtml">
         <ui:define name="body">
                 
-            <h:form>
+            <h:form id="searchForm">
                 <p:growl id="growl" showDetail="true"/>
                 <h3>Flight Finder</h3>
                 <p:panel header="Search">
                 <h:outputText value="Please enter your start and destination countries below." />
                 <p:panelGrid columns="2">
-                    <h:outputLabel for="from" value="From: " />
-                    <p:inputText id="from" label="From" />
-                    <h:outputLabel for="to" value="To: " />
-                    <p:inputText id="to" label="To" />
+                    <h:outputLabel for="fromId" value="From: " />
+                    <p:inputText id="fromId"  value="#{bookingController.fromCity}" label="From" />
+                    <h:outputLabel for="toId" value="To: " />
+                    <p:inputText id="toId"  value="#{bookingController.toCity}" label="To" />
                     <p:commandButton value="Search" action="#{bookingController.prepareView}" ajax="false" />
                 </p:panelGrid>
                 </p:panel>

@@ -93,7 +93,12 @@ public class Airport  implements java.io.Serializable {
         this.iata = iata;
     }
 
-
+     @Override
+     public String toString(){
+         
+         return this.name;
+    
+    }
 
 
 }

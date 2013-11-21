@@ -46,7 +46,7 @@ public class BookingHelper {
     return countryList;
 }
     
-    public List getRoutes(int fromId, int toId) {
+    public List<Route> getRoutes(int fromId, int toId) {
     String queryString = "SELECT R.airline FROM  Route R WHERE R.fromId = \"" + fromId + "\" AND R.toId = \""+ toId +"\"  ORDER BY R.airlineId ASC";
     List<Route> routeList = null;
     try {
@@ -58,8 +58,8 @@ public class BookingHelper {
     }
     return routeList;
 }
-    public List getAirports() {
-    String queryString = "FROM  Airport A ORDER BY A.name ASC";
+    public List<Airport> getAirports(String city) {
+    String queryString = "FROM  Airport A WHERE A.city = \"" + city + "\" ORDER BY A.name ASC";
     List<Airport> airportList = null;
     try {
         org.hibernate.Transaction tx = session.beginTransaction();

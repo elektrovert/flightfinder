@@ -59,7 +59,11 @@ public class Airline  implements java.io.Serializable {
         this.routes = routes;
     }
 
-
+     @Override
+    public String toString(){
+        
+        return this.name;
+    }
 
 
 }
