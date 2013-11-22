@@ -11,15 +11,13 @@
             <h:panelGrid id="display" columns="1" cellpadding="5">
 
                 <h:form>
-
                     <h3>FROM: </h3> 
+                    
                     <p:selectOneRadio id="gridFrom" value="#{bookingController.selectedFrom}" layout="pageDirection">
-                                      <f:selectItems value="#{bookingController.fromAirports}" />
-                                     
+                                      <f:selectItems value="#{bookingController.fromAirports}" />              
                     </p:selectOneRadio>
 
                     <h3>TO: </h3> 
-
 
                     <p:selectOneRadio id="gridTo" value="#{bookingController.selectedTo}" layout="pageDirection">
                                       <f:selectItems value="#{bookingController.toAirports}" />
