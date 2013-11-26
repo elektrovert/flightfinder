@@ -114,8 +114,11 @@ public class Route  implements java.io.Serializable {
         this.price = price;
     }
 
-
-
+    @Override
+    public String toString(){
+        System.out.println("The ROUTE toString method was called!");
+        return airline.getName() + " : From: " + fromIata + "; To: " + toIata + "; Price: €" + price;
+    }
 
 }
 

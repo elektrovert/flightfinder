@@ -13,11 +13,13 @@
     <ui:define name="body">
         <h:panelGrid id="display" columns="1" cellpadding="5">
             <h:form>
-                <p:selectOneRadio id="gridFrom" value="#{bookingController.selectedRoute}" layout="pageDirection">
-                    <f:selectItems value="#{bookingController.routes}" />
+                <p:selectOneRadio id="gridFrom" value="#{routesController.selectedRoute.toString}" layout="pageDirection" rendered="#{not empty routesController.routes}">
+                    <f:selectItems value="#{routesController.routes}" />
 
                 </p:selectOneRadio> 
-             <p:commandButton value="Search" action="#{bookingController.prepareResultConfirmation}" ajax="false" />
+                <p:outputLabel id="noResults" value="No results found!" rendered="#{empty routesController.routes}" />
+              
+                <p:commandButton id="selectRoute" value="Select"  action="#{routesController.prepareResultConfirmation}" />
             </h:form>  
         </h:panelGrid>
     </ui:define>

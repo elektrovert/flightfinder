@@ -8,23 +8,29 @@
 
     <ui:composition template="./template.xhtml">
         <ui:define name="body">
-                
+
             <h:form id="searchForm">
                 <p:growl id="growl" showDetail="true" />
                 <h3>Flight Finder</h3>
                 <p:panel header="Search">
-                <h:outputText value="Please enter your start and destination countries below." />
-                <p:panelGrid columns="2">
-                    <h:outputLabel for="fromId" value="From: " />
-                    <p:inputText id="fromId"  value="#{bookingController.fromCity}" label="From" />
-                    <h:outputLabel for="toId" value="To: " />
-                    <p:inputText id="toId"  value="#{bookingController.toCity}" label="To" />
-                    <p:commandButton value="Search" action="#{bookingController.prepareView}" ajax="false" />
-                </p:panelGrid>
+                    <h:outputText value="Please enter your start and destination Cities below." />
+                    <h:panelGrid columns="2" cellpadding="5">
+
+                        <h:outputLabel for="fromId" value="From: " />
+                        <p:autoComplete id="fromId"  value="#{routesController.fromAirport}" label="From" 
+                                        completeMethod="#{airportController.completeAirport}" />
+
+                        <h:outputLabel for="toId" value="To: " />
+                        <p:autoComplete id="toId"  value="#{routesController.toAirport}" label="From" 
+                                        completeMethod="#{airportController.completeAirport}" />
+
+                        <p:commandButton value="Search" action="#{bookingController.prepareRoutesView}" ajax="false" />
+                    </h:panelGrid>
                 </p:panel>
             </h:form>
+ 
         </ui:define>
-          
+
     </ui:composition>
 
 </html>

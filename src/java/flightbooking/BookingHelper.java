@@ -46,8 +46,10 @@ public class BookingHelper {
     return countryList;
 }
     
-    public List<Route> getRoutes(int fromId, int toId) {
-    String queryString = "SELECT R.airline FROM  Route R WHERE R.fromId = \"" + fromId + "\" AND R.toId = \""+ toId +"\"  ORDER BY R.airlineId ASC";
+    public List getRoutes(int fromId, int toId) {
+//    String queryString = "SELECT R.airline FROM  Route R WHERE R.fromId = \"" + fromId + "\" AND R.toId = \""+ toId +"\"  ORDER BY R.airlineId ASC";
+    String queryString = "FROM  Route R WHERE R.fromId =\"" + fromId + "\" AND R.toId = \""+ toId +"\" ORDER BY R.price ASC";
+//    String queryString = "SELECT R.airline,  R.price  FROM  Route R WHERE R.fromId =\"" + fromId + "\" AND R.toId = \""+ toId +"\" ORDER BY R.price ASC";
     List<Route> routeList = null;
     try {
         org.hibernate.Transaction tx = session.beginTransaction();
@@ -56,10 +58,26 @@ public class BookingHelper {
     } catch (Exception e) {
         e.printStackTrace();
     }
+//    for(Route r : routeList){
+//    System.out.println(r.getAirline().getName() + ", " + r.getPrice());
+//    }
     return routeList;
 }
     public List<Airport> getAirports(String city) {
     String queryString = "FROM  Airport A WHERE A.city = \"" + city + "\" ORDER BY A.name ASC";
+    List<Airport> airportList = null;
+    try {
+        org.hibernate.Transaction tx = session.beginTransaction();
+        Query q = session.createQuery (queryString);
+        airportList = (List<Airport>) q.list();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return airportList;
+}
+    public List<Airport> getAirports() {
+    String queryString = "FROM  Airport A";
     List<Airport> airportList = null;
     try {
         org.hibernate.Transaction tx = session.beginTransaction();
