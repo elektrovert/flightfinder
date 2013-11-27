@@ -27,18 +27,12 @@ public class BookingController implements Serializable{
     int endId;
     String from;
     String to;
-    private int selectedItemIndex;
-    private Route currentRoute;
-    private Airport currentAirport;
     private String selectedFrom;
     private String selectedTo;
     private String selectedRoute;
-    private DataModel searchResults;
     BookingHelper helper;
     List<Route> routes;
     public List<Airport> toAirports;
-    public String fromCity; // = ((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getParameter("fromId"); 
-    public String toCity; // = ((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getParameter("toId"); 
     public List<Airport> fromAirports;
 
     public String getSelectedRoute() {
@@ -101,14 +95,6 @@ public class BookingController implements Serializable{
     public BookingController() {
         helper = new BookingHelper();  
     }
-    
-    public Airport getSelected() {
-        if (currentAirport == null) {
-            currentAirport = new Airport();
-            selectedItemIndex = -1;
-        }
-        return currentAirport;
-    }
 
     public List<Route> getRoutes(String from, String to) {
         int fromId = 0, toId = 0;
@@ -152,53 +138,11 @@ public class BookingController implements Serializable{
         return toAirports;
 
     }
-
-    void recreateModel() {
-        routes = null;
-        fromAirports = null;
-        toAirports = null;
-    }
-
-    public String prepareView() {
-        getFromAirports(fromCity);
-        getToAirports(toCity);
-        
-        return "airportresults";
-    }
     
         public String prepareRoutesView() {
             getRoutes(selectedFrom, selectedTo);
         
         return "routesresults";
-    }
-
-    public String prepareList() {
-        recreateModel();
-        return "index";
-    }
-
-    public String getRouteAirline() {
-
-        return null;
-    }
-    
-    public void setFromCity(String city){
-        fromCity = city;
-    }
-    public String getFromCity(){
-        return fromCity;
-    }
-    
-    public void setToCity(String city){
-        toCity = city;
-    }
-    public String getToCity(){
-        return toCity;
-    }
-    
-    public String prepareIndex(){
-    
-        return "index";
     }
 
 }

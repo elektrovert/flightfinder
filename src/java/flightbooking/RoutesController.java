@@ -23,16 +23,16 @@ public class RoutesController {
     String toAirport;
     String fromIata;
     String toIata;
-    Route selectedRoute;
+    String selectedRoute;
     BookingHelper helper;
     List<Route> routes;
     List<Airport> airports;
 
-    public Route getSelectedRoute() {
+    public String getSelectedRoute() {
         return selectedRoute;
     }
 
-    public void setSelectedRoute(Route selectedRoute) {
+    public void setSelectedRoute(String selectedRoute) {
         this.selectedRoute = selectedRoute;
     }
 
