@@ -16,10 +16,10 @@
                 <h:outputText value="Please enter your start and destination countries below." />
                 <p:panelGrid columns="2">
                     <h:outputLabel for="fromId" value="From: " />
-                    <p:inputText id="fromId"  value="#{bookingController.fromCity}" label="From" />
+                    <p:inputText id="fromId"  value="#{searchController.fromCity}" label="From" />
                     <h:outputLabel for="toId" value="To: " />
-                    <p:inputText id="toId"  value="#{bookingController.toCity}" label="To" />
-                    <p:commandButton value="Search" action="#{bookingController.prepareView}" ajax="false" />
+                    <p:inputText id="toId"  value="#{searchController.toCity}" label="To" />
+                    <p:commandButton value="Search" action="#{searchController.prepareView}" ajax="false" />
                 </p:panelGrid>
                 </p:panel>
             </h:form>

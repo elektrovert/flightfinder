@@ -89,4 +89,17 @@ public class BookingHelper {
 
     return airportList;
 }
+
+    public Route getRoute(int routeId) {
+    String queryString = "Select \"" + routeId + "\" FROM Route R";
+    Route route = null;
+    try {
+        org.hibernate.Transaction tx = session.beginTransaction();
+        Query q = session.createQuery (queryString);
+        route = (Route) q.list().get(0);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+        return route;
+    }
 }

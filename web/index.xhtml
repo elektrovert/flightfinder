@@ -17,14 +17,14 @@
                     <h:panelGrid columns="2" cellpadding="5">
 
                         <h:outputLabel for="fromId" value="From: " />
-                        <p:autoComplete id="fromId"  value="#{routesController.fromAirport}" label="From" 
-                                        completeMethod="#{airportController.completeAirport}" />
+                        <p:autoComplete id="fromId"  value="#{searchController.fromAirport}" label="From" 
+                                        completeMethod="#{autoComplete.completeAirport}" forceSelection="true" />
 
                         <h:outputLabel for="toId" value="To: " />
-                        <p:autoComplete id="toId"  value="#{routesController.toAirport}" label="From" 
-                                        completeMethod="#{airportController.completeAirport}" />
+                        <p:autoComplete id="toId"  value="#{searchController.toAirport}" label="From" 
+                                        completeMethod="#{autoComplete.completeAirport}" forceSelection="true" />
 
-                        <p:commandButton value="Search" action="#{bookingController.prepareRoutesView}" ajax="false" />
+                        <p:commandButton id="SearchDB" value="Search" action="#{searchController.prepareRoutesView}" ajax="false" />
                     </h:panelGrid>
                 </p:panel>
             </h:form>

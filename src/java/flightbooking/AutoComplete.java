@@ -17,7 +17,7 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean
 @SessionScoped
-public class AirportController {
+public class AutoComplete {
 
     Airport fromAirport;
     Airport toAirport;
@@ -53,7 +53,7 @@ public class AirportController {
     /**
      * Creates a new instance of AirportController
      */
-    public AirportController() {
+    public AutoComplete() {
         helper = new BookingHelper();
         airports = helper.getAirports();
     }

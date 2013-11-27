@@ -13,13 +13,14 @@
     <ui:define name="body">
         <h:panelGrid id="display" columns="1" cellpadding="5">
             <h:form>
-                <p:selectOneRadio id="gridFrom" value="#{routesController.selectedRoute}" 
+                <h:selectOneRadio id="routeOptions" value="#{searchController.routeId}" 
                                   layout="pageDirection">
-                    <f:selectItems value="#{routesController.routes}" rendered="#{not empty routesController.routes}"/>
-
-                </p:selectOneRadio> 
-                <p:outputLabel id="noResults" value="No results found!" rendered="#{empty routesController.routes}" />
-                <p:commandButton id="selectRoute" value="Select"  action="#{routesController.prepareResultConfirmation}" />
+                    <f:selectItems  value="#{searchController.routes}" var="route" itemLabel="#{route.details}" 
+                                    itemValue="#{route.id}" rendered="#{not empty searchController.routes}"/>
+                </h:selectOneRadio> 
+                <p:outputLabel id="noResults" value="No results found!" rendered="#{empty searchController.routes}" />
+                <p:commandButton id="selectIndex" value="Search Again" rendered="#{empty searchController.routes}" action="#{searchController.prepareIndexView}" ajax="false"/>
+                <p:commandButton id="selectRoute" value="Select"  rendered="#{not empty searchController.routes}" action="#{searchController.prepareConfirmView}" ajax="false" />
             </h:form>  
         </h:panelGrid>
     </ui:define>

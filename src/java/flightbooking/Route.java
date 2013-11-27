@@ -113,6 +113,12 @@ public class Route  implements java.io.Serializable {
     public void setPrice(int price) {
         this.price = price;
     }
+    
+    public String getDetails(){
+        String details = airline.getName() + ": €" + price;
+        return details;
+        
+    }
 
     @Override
     public String toString(){

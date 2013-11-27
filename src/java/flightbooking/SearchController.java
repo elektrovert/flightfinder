@@ -8,8 +8,6 @@ package flightbooking;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import org.jboss.weld.context.RequestContext;
-import org.primefaces.event.SelectEvent;
 
 /**
  *
@@ -17,22 +15,31 @@ import org.primefaces.event.SelectEvent;
  */
 @ManagedBean
 @RequestScoped
-public class RoutesController {
+public class SearchController {
 
     String fromAirport;
     String toAirport;
-    String fromIata;
-    String toIata;
-    String selectedRoute;
+    Route selectedRoute;
+    String routeId;
     BookingHelper helper;
     List<Route> routes;
     List<Airport> airports;
 
-    public String getSelectedRoute() {
-        return selectedRoute;
+    public String getRouteId() {
+        return routeId;
     }
 
-    public void setSelectedRoute(String selectedRoute) {
+    public void setRouteId(String routeId) {
+        this.routeId = routeId;
+        System.out.println("RouteId = " + routeId);
+    }
+
+    public void calculateSelectedRoute() {
+        int routeIdInt = Integer.getInteger(routeId);
+        selectedRoute = helper.getRoute(routeIdInt);      
+    }
+
+    public void setSelectedRoute(Route selectedRoute) {
         this.selectedRoute = selectedRoute;
     }
 
@@ -53,24 +60,15 @@ public class RoutesController {
         System.out.println("To Airport = " + toAirport);
         this.toAirport = toAirport;
     }
-
-    public String prepareRoutesView() {
-        getRoutes();
-        return "index";
-    }
-
-    public void onRouteChosen(SelectEvent event){
     
-        Route route = (Route) event.getObject();
-        
-    }
-    
-    public void chooseRoute(){
-     //   RequestContext.getCurrentInstance().openDialog("selectRoute");
-       
-        
-    }
     public List<Route> getRoutes() {
+   
+        return routes;
+
+    }
+    
+
+    public void calculateRoutes() {
         int fromId = 0, toId = 0;
         System.out.println("From Airport: " + fromAirport);
         System.out.println("To Airport: " + toAirport);
@@ -87,26 +85,34 @@ public class RoutesController {
                 break;
             }
         }
-
         System.out.println("From ID: " + fromId + ", To ID: " + toId);
         if (routes == null) {
             routes = helper.getRoutes(fromId, toId);
         }
         System.out.println("Routes received! size = " + routes.size());
+    }
 
-        return routes;
-
+    public String prepareRoutesView() {
+        calculateRoutes();
+        return "routesresults";
     }
     
-        public String prepareResultConfirmation(){
-        System.out.println("Selected ROUTE: " + selectedRoute);
-        return "confirmselection";
+    public String prepareIndexView(){
+        System.out.println("The selectedRoute was " + selectedRoute);
+        System.out.println("The fromAirport was " + fromAirport);
+        System.out.println("The toAirport was " + toAirport);
+        return "index";
+    }
+
+    public String prepareConfirmView() {
+      //  calculateSelectedRoute();
+        return "confirmflight";
     }
 
     /**
      * Creates a new instance of RoutesController
      */
-    public RoutesController() {
+    public SearchController() {
         helper = new BookingHelper();
         airports = helper.getAirports();
 
